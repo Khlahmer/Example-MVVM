@@ -11,12 +11,8 @@ class TeamsRepositoryImpl @Inject constructor(private val teamsApi: TeamsApi) : 
         return try {
             val data: ResponseModelData = teamsApi.getTeams()
             data.data
-
         } catch (e: Exception) {
             emptyList()
         }
-
     }
-
-
 }

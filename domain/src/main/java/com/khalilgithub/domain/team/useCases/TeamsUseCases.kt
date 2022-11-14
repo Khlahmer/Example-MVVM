@@ -9,14 +9,9 @@ import javax.inject.Inject
 class TeamsUseCases @Inject constructor(
     private val repository: TeamsRepository
 ) {
-    private val mapper= TeamModelFromDataToDomain()
+    private val mapper = TeamModelFromDataToDomain()
     suspend fun getTeams(): List<TeamsModelDomain> {
-        return try {
-            val data: List<TeamsModelData> = repository.getTeams()
-            mapper.toDomain(data)
-        } catch (e: Exception) {
-            emptyList()
-        }
-
+        val data: List<TeamsModelData> = repository.getTeams()
+        return mapper.toDomain(data)
     }
 }
