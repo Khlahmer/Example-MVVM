@@ -2,9 +2,6 @@ package com.khalilgithub.domain.common
 
 import com.khalilgithub.data.team.models.TeamsModelData
 import com.khalilgithub.domain.team.models.TeamsModelDomain
-import dagger.Module
-import dagger.Provides
-import dagger.Reusable
 
 abstract class DataToDomainMapper<INPUT : Any, OUTPUT : Any> {
     fun toDomain(input: INPUT): OUTPUT = try {
@@ -34,7 +31,7 @@ fun List<TeamsModelData>.toDomain(): List<TeamsModelDomain> {
     return list
 }
 
-class TeamModelFromDataToDomain ():
+class TeamModelFromDataToDomain() :
     DataToDomainMapper<List<TeamsModelData>, List<TeamsModelDomain>>() {
     override fun map(input: List<TeamsModelData>): List<TeamsModelDomain> {
         return input.toDomain()
